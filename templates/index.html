@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Transformation AI</title>
+  <style>
+    /* Reset default margin and padding for the body */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center; /* Center content horizontally */
+      align-items: center; /* Center content vertically */
+      min-height: 100vh; /* Ensure content takes up full viewport height */
+      background-color: #f2f2f2; /* Background color for the body */
+    }
+
+    /* Style for the header */
+    header {
+      background-color: #007DB8;
+      color: white;
+      padding: 10px; /* Increase padding */
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000; /* Ensure header is on top */
+    }
+
+    /* Style for the footer */
+    footer {
+      background-color: #007DB8;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* Style for the main content area */
+    .content {
+      text-align: center; /* Center content horizontally */
+      margin-top: 60px; /* Adjust according to the height of the header */
+    }
+
+    /* Custom file input style */
+    .file-input {
+      display: inline-block; /* Make the label and input inline */
+      margin-right: 10px; /* Add space between the button and the input */
+      position: relative;
+      overflow: hidden;
+      width: 160px; /* Set width of the button */
+      background-color: #007DB8; /* Button background color */
+      color: white; /* Button text color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 10px; /* Adjust padding */
+    }
+
+    .file-input input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Style for the upload button */
+    input[type=submit] {
+      background-color: #007DB8; /* Button background color */
+      color: white; /* Button text color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 11px 44px; /* Adjust padding */
+    }
+
+    /* Style for progress bar */
+    .progress-bar {
+      width: 105%; /* Increase width by 5px */
+      background-color: #ddd; /* Background color of progress bar */
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .progress-bar-fill {
+      height: 20px; /* Height of the progress bar */
+      background-color: green; /* Color of the progress bar */
+      border-radius: 5px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    /* Style for success message */
+    .success-message {
+      color: green;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Style for container */
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center content horizontally */
+    }
+
+    /* Style for spacing between button and file name display */
+    .file-name {
+      margin-left: 5px; 
+      margin-right: 9px; /* Adjust spacing between button and file name display */
+    }
+
+    /* Style for the container of the "Create Transform" button */
+    .create-transform-container {
+      margin-top: 20px; /* Adjust the top margin */
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Data Transformation AI</h1>
+</header>
+<div class="content">
+  <form id="uploadForm" method="POST" enctype="multipart/form-data" action="/">
+    <div class="button-container">
+      <label for="fileInput" class="file-input">
+        Choose File
+        <input type="file" name="file" id="fileInput" accept=".csv" onchange="displayFileName()">
+      </label>
+      <span id="fileName" class="file-name"></span>
+      <input type="submit" value="Upload">
+    </div>
+  </form>
+
+  <br>
+  <div class="progress-bar">
+    <div id="progressBar" class="progress-bar-fill" style="width: 0;"></div>
+  </div>
+
+  <div id="successMessage" class="success-message" style="display: none;">
+    File has been successfully uploaded
+  </div>
+
+  <br> <!-- Add line break -->
+  <!-- Separate container for the "Create Transform" button -->
+  <div class="create-transform-container">
+    <form action="/show_data" target="_blank">
+      <input type="submit" value="Create Transform"/>
+    </form>
+  </div>
+</div>
+<footer>
+  <p>Developed by Joe Peck</p>
+</footer>
+
+<script>
+  // JavaScript for handling file upload progress
+  document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    var formData = new FormData(this);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/");
+
+    // Progress event listener
+    xhr.upload.addEventListener("progress", function(event) {
+      if (event.lengthComputable) {
+        var progressBar = document.getElementById("progressBar");
+        var percentComplete = (event.loaded / event.total) * 100;
+        progressBar.style.width = percentComplete + "%";
+      }
+    });
+
+    xhr.onload = function() {
+      document.getElementById("successMessage").style.display = "block";
+    };
+
+    xhr.send(formData);
+  });
+
+  // Function to display the selected file name
+  function displayFileName() {
+    var fileInput = document.getElementById("fileInput");
+    var fileNameDisplay = document.getElementById("fileName");
+    fileNameDisplay.textContent = fileInput.files[0].name;
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+     
+
+
+
+

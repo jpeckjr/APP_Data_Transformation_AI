@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Page</title>
+</head>
+<body>
+    <h1>OpenAI API Form</h1>
+    <form action="/submit" method="post">
+        <label for="field_input">Field:</label>
+        <input type="text" name="field_input" id="field_input" required>
+        <br>
+        <label for="data_type">Data Type:</label>
+        <input type="text" name="data_type" id="data_type" required>
+        <br>
+        <label for="request_input">Request Input:</label>
+        <textarea name="request_input" id="request_input" rows="4" cols="50" required>I want a transform that...</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <h2>Uploaded CSV Data Preview</h2>
+    {{ data_var|safe }}
+    <br>
+    <form action="/download" method="get">
+        <button type="submit">Download New File</button>
+        </form>
+        <a href="{{ url_for('uploadFile') }}"><button>Upload a New file</button></a>
+</body>
+</html>

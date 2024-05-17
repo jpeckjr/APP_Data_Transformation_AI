@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Own Transform</title>
+    <style>
+        /* Reset default margin and padding for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            min-height: 100vh; /* Ensure content takes up full viewport height */
+            background-color: #f2f2f2; /* Background color for the body */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Style for the header */
+        header {
+            background-color: #007DB8;
+            color: white;
+            padding: 10px; /* Increase padding */
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Style for the footer */
+        footer {
+            background-color: #007DB8;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        /* Style for the main content area */
+        main {
+            text-align: center; /* Center content horizontally */
+            width: 100%;
+        }
+
+        /* Style for the form */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Style for form labels */
+        form label {
+            margin-bottom: 10px;
+            color: #007DB8; /* Change text color */
+        }
+
+        /* Style for form inputs */
+        form input, form textarea {
+            width: 100%;
+            max-width: 300px; /* Limit input width */
+            margin-bottom: 10px;
+        }
+
+        /* Style for the buttons */
+        button {
+            margin-top: 10px;
+            color: white;
+            background-color: #007DB8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 50px;
+        }
+
+        /* Style for the buttons when hovered */
+        button:hover {
+            background-color: #005f8a; /* Darken the background color */
+        }
+
+        /* Style for the data preview */
+        .data-preview {
+            margin-top: 20px;
+            
+        }
+    </style>
+</head>
+<body> 
+  <header>
+    <h1>Create Your Own Transformation</h1>
+  </header>
+
+  <main>
+    <form action="/submit" method="post">
+        <h2>Follow the Steps</h2>
+        <h4>1. Input the the field you want to change, Protip: copy and paste from the preview below</h4>
+        <label for="field_input"><strong>Field:</strong></label>
+        <input type="text" name="field_input" id="field_input" required>
+        <br>
+        <h4>2. Input the data type for the field above. Example: string, number, date, text, decimal etc.</h4>
+        <label for="data_type"><strong>Data Type:</strong></label>
+        <input type="text" name="data_type" id="data_type" required>
+        <br>
+        <h4>3. Input the request to transform the field values. "I want a transform that..." fill in the blank. Be specific with the action. Example: 'converts all letters to lowercase' or 'removes 'H' from the value' </h4>
+        <label for="request_input"><strong>Request Input:</strong></label>
+        <textarea name="request_input" id="request_input" rows="4" cols="50" required>Add '' for specific values</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <h2 class="data-preview">File Preview</h2>
+    {{ data_var|safe }}
+
+    <form action="/download" method="get">
+        <button type="submit">Download New File</button>
+    </form>
+    <br>
+    <a href="{{ url_for('uploadFile') }}"><button>Upload New File</button></a>
+  </main>
+<br>
+  <footer>
+    <p>Developed by Joe Peck</p>
+  </footer>
+</body> 
+</html>
+
+
+
+
