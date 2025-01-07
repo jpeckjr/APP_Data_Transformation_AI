@@ -9,7 +9,9 @@ After cloning the repo from GitHub, you will need to do the following steps to r
 3. Download the latest version of PIP. I recommend Hombrew for Mac, here is the command:  
             /bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
 
-4. Use pip to install the python libraries that will be needed:
+4. Install Flask: https://flask.palletsprojects.com/en/stable/installation/
+
+5. Use pip to install the python libraries that will be needed:
    Flask,Pandas,re,openai,os, werkzeug.utils,send2trash
 
-5. Create an OpenAI account and create and API key: https://platform.openai.com/api-keys (API key will go on line 95 of APP.py file)
+6. Create an OpenAI account and create and API key: https://platform.openai.com/api-keys (API key will go on line 95 of APP.py file)
