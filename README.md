@@ -12,4 +12,4 @@ After cloning the repo from GitHub, you will need to do the following steps to r
 4. Use pip to install the python libraries that will be needed:
    Flask,Pandas,re,openai,os, werkzeug.utils,send2trash
 
-5. Create an OpenAI account and create and API key: https://platform.openai.com/api-keys
+5. Create an OpenAI account and create and API key: https://platform.openai.com/api-keys (API key will go on line 95 of APP.py file)
