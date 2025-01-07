@@ -12,6 +12,6 @@ After cloning the repo from GitHub, you will need to do the following steps to r
 4. Install Flask: https://flask.palletsprojects.com/en/stable/installation/
 
 5. Use pip to install the python libraries that will be needed:
-   Flask,Pandas,re,openai,os, werkzeug.utils,send2trash
+   Flask, Pandas, re, openai, os, werkzeug.utils(included in Flask), send2trash
 
 6. Create an OpenAI account and create and API key: https://platform.openai.com/api-keys (API key will go on line 95 of APP.py file)
