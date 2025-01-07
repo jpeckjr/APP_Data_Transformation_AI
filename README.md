@@ -8,3 +8,11 @@ After cloning the repo from GitHub, you will need to do the following steps to r
 3. Download the latest version of PIP. I recommend Hombrew for Mac, here is the command:  
             /bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
 4. Use pip to install the python libraries that will be needed:
+
+Flask
+Pandas
+re
+openai
+os
+werkzeug.utils import secure_filename
+send2trash
